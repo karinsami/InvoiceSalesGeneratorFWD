@@ -1,11 +1,14 @@
 
 package com.model;
 
+import java.util.ArrayList;
+
 
 public class Invoice {
     private int No;
     private String date;
     private String customerName;
+    private ArrayList<InvoiceLine> lines;
     
 
     public Invoice() {

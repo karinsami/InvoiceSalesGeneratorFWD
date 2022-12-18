@@ -13,12 +13,6 @@ public class InvoiceLine {
     public InvoiceLine() {
     }
 
-    public InvoiceLine(int lineNo, String Itemname, double Itemprice, int count) {
-        this.lineNo = lineNo;
-        this.Itemname = Itemname;
-        this.Itemprice = Itemprice;
-        this.count = count;
-    }
 
     public InvoiceLine(int lineNo, String Itemname, double Itemprice, int count, Invoice Num) {
         this.lineNo = lineNo;

@@ -2,6 +2,6 @@
 package com.view;
 
 
-public class Invoice {
+public class InvoiceView {
     
 }

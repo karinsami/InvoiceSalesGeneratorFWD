@@ -42,18 +42,26 @@
             <Property name="text" type="java.lang.String" value="File"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="loadFileMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="loadFileMI">
               <Properties>
                 <Property name="label" type="java.lang.String" value="Load File"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loadFileMenuItemActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loadFileMIActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="loadFileMI.addActionListener(cntrler);"/>
+                <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+              </AuxValues>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="saveFileMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="saveFileMI">
               <Properties>
                 <Property name="label" type="java.lang.String" value="Save File"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="saveFileMI.addActionListener(cntrler);"/>
+              </AuxValues>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -62,6 +70,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Sale Invoice Generator "/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
@@ -114,12 +123,12 @@
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="InvoiceTotalLabel" min="-2" pref="57" max="-2" attributes="0"/>
-                                                  <Component id="InvoiceNumLabel" min="-2" pref="60" max="-2" attributes="0"/>
+                                                  <Component id="invoiceNumLabel" min="-2" pref="60" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
-                                          <Component id="CustomerNameLabel" max="32767" attributes="0"/>
-                                          <Component id="InvoiceDateLabel" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="customerNameLabel" max="32767" attributes="0"/>
+                                          <Component id="invoiceDateLabel" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="jScrollPane2" alignment="0" pref="0" max="32767" attributes="0"/>
@@ -160,22 +169,24 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="InvoiceTableLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbl1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="InvoiceNumLabel" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="invoiceNumLabel" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="InvoiceTableLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lbl2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="InvoiceDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="invoiceDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lbl3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="CustomerNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="customerNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -232,6 +243,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Create New Invoice"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="createNewInvoiceBtn.addActionListener(cntrler);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="deleteInvoiceBtn">
       <Properties>
@@ -240,6 +254,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteInvoiceBtnActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="deleteInvoiceBtn.addActionListener(cntrler);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="lbl1">
       <Properties>
@@ -268,6 +285,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveBtnActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="saveBtn.addActionListener(cntrler);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="cancelBtn">
       <Properties>
@@ -276,8 +296,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelBtnActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="cancelBtn.addActionListener(cntrler);"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="InvoiceNumLabel">
+    <Component class="javax.swing.JLabel" name="invoiceNumLabel">
     </Component>
     <Component class="javax.swing.JLabel" name="InvoiceTotalLabel">
       <Properties>
@@ -307,17 +330,14 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="InvoiceDateLabel">
+    <Component class="javax.swing.JTextField" name="invoiceDateLabel">
     </Component>
-    <Component class="javax.swing.JTextField" name="CustomerNameLabel">
+    <Component class="javax.swing.JTextField" name="customerNameLabel">
     </Component>
     <Component class="javax.swing.JLabel" name="InvoiceTableLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Invoice Table"/>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Invoice Table"/>
-      </AccessibilityProperties>
     </Component>
     <Component class="javax.swing.JLabel" name="InvoiceItemsLabel">
       <Properties>

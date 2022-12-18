@@ -4,12 +4,27 @@
  */
 package com.view;
 
+import com.controller.Controller;
+import com.model.Invoice;
+import java.util.ArrayList;
+
 /**
  *
  * @author KARIN
  */
 public class SIGUI extends javax.swing.JFrame {
 
+    private ArrayList<Invoice> invoices;
+    private Controller cntrler = new Controller();
+
+    public ArrayList<Invoice> getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(ArrayList<Invoice> invoices) {
+        this.invoices = invoices;
+    }
+    
     /**
      * Creates new form SIGUI
      */
@@ -31,25 +46,31 @@ public class SIGUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         invoiceTable = new javax.swing.JTable();
         createNewInvoiceBtn = new javax.swing.JButton();
+        createNewInvoiceBtn.addActionListener(cntrler);
         deleteInvoiceBtn = new javax.swing.JButton();
+        deleteInvoiceBtn.addActionListener(cntrler);
         lbl1 = new javax.swing.JLabel();
         lbl2 = new javax.swing.JLabel();
         lbl3 = new javax.swing.JLabel();
         lbl4 = new javax.swing.JLabel();
         saveBtn = new javax.swing.JButton();
+        saveBtn.addActionListener(cntrler);
         cancelBtn = new javax.swing.JButton();
-        InvoiceNumLabel = new javax.swing.JLabel();
+        cancelBtn.addActionListener(cntrler);
+        invoiceNumLabel = new javax.swing.JLabel();
         InvoiceTotalLabel = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lineTable = new javax.swing.JTable();
-        InvoiceDateLabel = new javax.swing.JTextField();
-        CustomerNameLabel = new javax.swing.JTextField();
+        invoiceDateLabel = new javax.swing.JTextField();
+        customerNameLabel = new javax.swing.JTextField();
         InvoiceTableLabel = new javax.swing.JLabel();
         InvoiceItemsLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        loadFileMenuItem = new javax.swing.JMenuItem();
-        saveFileMenuItem = new javax.swing.JMenuItem();
+        javax.swing.JMenuItem loadFileMI = new javax.swing.JMenuItem();
+        loadFileMI.addActionListener(cntrler);
+        saveFileMI = new javax.swing.JMenuItem();
+        saveFileMI.addActionListener(cntrler);
 
         jInternalFrame1.setVisible(true);
 
@@ -76,6 +97,7 @@ public class SIGUI extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sale Invoice Generator ");
 
         invoiceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -151,16 +173,16 @@ public class SIGUI extends javax.swing.JFrame {
 
         fileMenu.setText("File");
 
-        loadFileMenuItem.setLabel("Load File");
-        loadFileMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        loadFileMI.setLabel("Load File");
+        loadFileMI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loadFileMenuItemActionPerformed(evt);
+                loadFileMIActionPerformed(evt);
             }
         });
-        fileMenu.add(loadFileMenuItem);
+        fileMenu.add(loadFileMI);
 
-        saveFileMenuItem.setLabel("Save File");
-        fileMenu.add(saveFileMenuItem);
+        saveFileMI.setLabel("Save File");
+        fileMenu.add(saveFileMI);
 
         jMenuBar1.add(fileMenu);
 
@@ -196,10 +218,10 @@ public class SIGUI extends javax.swing.JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(InvoiceTotalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(InvoiceNumLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(invoiceNumLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(0, 0, Short.MAX_VALUE))
-                                            .addComponent(CustomerNameLabel)
-                                            .addComponent(InvoiceDateLabel)))
+                                            .addComponent(customerNameLabel)
+                                            .addComponent(invoiceDateLabel)))
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
@@ -226,20 +248,21 @@ public class SIGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(InvoiceTableLabel)
-                    .addComponent(lbl1)
-                    .addComponent(InvoiceNumLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(invoiceNumLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(InvoiceTableLabel)
+                        .addComponent(lbl1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl2)
-                            .addComponent(InvoiceDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(invoiceDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl3)
-                            .addComponent(CustomerNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(customerNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl4)
@@ -258,8 +281,6 @@ public class SIGUI extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        InvoiceTableLabel.getAccessibleContext().setAccessibleName("Invoice Table");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -267,9 +288,9 @@ public class SIGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteInvoiceBtnActionPerformed
 
-    private void loadFileMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFileMenuItemActionPerformed
+    private void loadFileMIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFileMIActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_loadFileMenuItemActionPerformed
+    }//GEN-LAST:event_loadFileMIActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
@@ -315,16 +336,16 @@ public class SIGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField CustomerNameLabel;
-    private javax.swing.JTextField InvoiceDateLabel;
     private javax.swing.JLabel InvoiceItemsLabel;
-    private javax.swing.JLabel InvoiceNumLabel;
     private javax.swing.JLabel InvoiceTableLabel;
     private javax.swing.JLabel InvoiceTotalLabel;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JButton createNewInvoiceBtn;
+    private javax.swing.JTextField customerNameLabel;
     private javax.swing.JButton deleteInvoiceBtn;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JTextField invoiceDateLabel;
+    private javax.swing.JLabel invoiceNumLabel;
     private javax.swing.JTable invoiceTable;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JMenuBar jMenuBar1;
@@ -336,8 +357,9 @@ public class SIGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl3;
     private javax.swing.JLabel lbl4;
     private javax.swing.JTable lineTable;
-    private javax.swing.JMenuItem loadFileMenuItem;
     private javax.swing.JButton saveBtn;
-    private javax.swing.JMenuItem saveFileMenuItem;
+    private javax.swing.JMenuItem saveFileMI;
     // End of variables declaration//GEN-END:variables
+
+
 }
