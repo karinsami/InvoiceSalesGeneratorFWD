@@ -235,6 +235,7 @@
             <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
+            <Property name="showGrid" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -325,7 +326,13 @@
                 <Column editable="true" title="Item Total" type="java.lang.Object"/>
               </Table>
             </Property>
+            <Property name="cellSelectionEnabled" type="boolean" value="true"/>
+            <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="99" type="rgb"/>
+            </Property>
             <Property name="name" type="java.lang.String" value="Invoice Items" noResource="true"/>
+            <Property name="showGrid" type="boolean" value="true"/>
+            <Property name="showHorizontalLines" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>

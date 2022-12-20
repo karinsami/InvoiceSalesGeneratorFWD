@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 
 public class Invoice {
-    private int No;
+    private int invoiceNo;
     private String date;
     private String customerName;
     private ArrayList<InvoiceLine> lines;
@@ -14,12 +14,12 @@ public class Invoice {
     public Invoice() {
     }
 
-    public Invoice(int No, String date, String customerName) {
-        this.No = No;
+    public Invoice(int invoiceNo, String date, String customerName) {
+        this.invoiceNo = invoiceNo;
         this.date = date;
         this.customerName = customerName;
     }
-
+ 
     public String getCustomerName() {
         return customerName;
     }
@@ -28,12 +28,13 @@ public class Invoice {
         this.customerName = customerName;
     }
 
-    public int getNo() {
-        return No;
+    public int getinvoiceNo() {
+        return invoiceNo;
     }
 
-    public void setNo(int No) {
-        this.No = No;
+   
+    public void setivoiceNo(int invoiceNo) {
+        this.invoiceNo = invoiceNo;
     }
 
     public String getDate() {
@@ -44,7 +45,13 @@ public class Invoice {
         this.date = date;
     }
 
-   
+       public ArrayList<InvoiceLine> getLines(){
+        if(lines == null){
+            lines = new ArrayList<>();
+        }
+        return lines;
+    }
+
     
     
 }

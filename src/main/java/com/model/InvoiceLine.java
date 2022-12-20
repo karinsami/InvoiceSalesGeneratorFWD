@@ -5,30 +5,30 @@ package com.model;
 
 public class InvoiceLine {
     private int lineNo;
-    private String Itemname;
-    private double Itemprice;
-    private int count;
-    private Invoice Num;
+    private String itemName;
+    private double itemPrice;
+    private int itemCount;
+    private Invoice num;
 
     public InvoiceLine() {
     }
 
 
-    public InvoiceLine(int lineNo, String Itemname, double Itemprice, int count, Invoice Num) {
+    public InvoiceLine(int lineNo, String itemName, double itemPrice, int itemCount, Invoice num) {
         this.lineNo = lineNo;
-        this.Itemname = Itemname;
-        this.Itemprice = Itemprice;
-        this.count = count;
-        this.Num = Num;
+        this.itemName = itemName;
+        this.itemPrice = itemPrice;
+        this.itemCount = itemCount;
+        this.num = num;
     }
     
 
-    public int getCount() {
-        return count;
+    public int getitemCount() {
+        return itemCount;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setitemCount(int itemCount) {
+        this.itemCount = itemCount;
     }
 
     public int getLineNo() {
@@ -39,20 +39,20 @@ public class InvoiceLine {
         this.lineNo = lineNo;
     }
 
-    public String getItemname() {
-        return Itemname;
+    public String getitemName() {
+        return itemName;
     }
 
-    public void setItemname(String Itemname) {
-        this.Itemname = Itemname;
+    public void setitemName(String itemName) {
+        this.itemName = itemName;
     }
 
-    public double getItemprice() {
-        return Itemprice;
+    public double getitemPrice() {
+        return itemPrice;
     }
 
-    public void setItemprice(double Itemprice) {
-        this.Itemprice = Itemprice;
+    public void setitemPrice(double itemPrice) {
+        this.itemPrice = itemPrice;
     }
     
     

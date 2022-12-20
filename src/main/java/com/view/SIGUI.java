@@ -118,6 +118,7 @@ public class SIGUI extends javax.swing.JFrame {
         invoiceTable.setToolTipText("");
         invoiceTable.setCellSelectionEnabled(true);
         invoiceTable.setGridColor(new java.awt.Color(153, 153, 153));
+        invoiceTable.setShowGrid(true);
         jScrollPane1.setViewportView(invoiceTable);
 
         createNewInvoiceBtn.setText("Create New Invoice");
@@ -164,7 +165,11 @@ public class SIGUI extends javax.swing.JFrame {
                 "NO.", "Item Name", "Item Price", "Count", "Item Total"
             }
         ));
+        lineTable.setCellSelectionEnabled(true);
+        lineTable.setGridColor(new java.awt.Color(153, 153, 153));
         lineTable.setName("Invoice Items"); // NOI18N
+        lineTable.setShowGrid(true);
+        lineTable.setShowHorizontalLines(true);
         jScrollPane2.setViewportView(lineTable);
 
         InvoiceTableLabel.setText("Invoice Table");
