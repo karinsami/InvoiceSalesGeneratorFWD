@@ -3,6 +3,7 @@ package com.controller;
 
 import com.model.Invoice;
 import com.model.InvoiceLine;
+import com.view.SIGUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -18,7 +19,15 @@ import javax.swing.JFileChooser;
 
 
 public class Controller implements ActionListener{
+    
+    private SIGUI gui;
 
+    public Controller(SIGUI gui){
+        this.gui = gui;
+        
+
+        
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         String actionCommand = e.getActionCommand();
@@ -49,7 +58,7 @@ public class Controller implements ActionListener{
     private void loadFile()  {
         JFileChooser fileChooser = new JFileChooser();
         try {                    
-        int respone = fileChooser.showOpenDialog(null);
+        int respone = fileChooser.showOpenDialog(gui);
          ArrayList<Invoice> invoiceDataArray;    
                 invoiceDataArray = new ArrayList<>();
         if (respone == JFileChooser.APPROVE_OPTION){
@@ -68,7 +77,7 @@ public class Controller implements ActionListener{
            invoiceDataArray.add(invoice);
         }  
         }
-        respone = fileChooser.showOpenDialog(null);
+        respone = fileChooser.showOpenDialog(gui);
         if (respone == JFileChooser.APPROVE_OPTION){
             File lineFile = fileChooser.getSelectedFile();
             Path linePath = Paths.get(lineFile.getAbsolutePath());
@@ -86,15 +95,16 @@ public class Controller implements ActionListener{
            
         for(Invoice invoice : invoiceDataArray)   
               if (invoice.getinvoiceNo() == NO){
-                  
-                   InvoiceLine line = new InvoiceLine(NO,itemsName,itemsPrice,itemCount,invoice );
-           invoice.getLines().add(line);
+                 
+                InvoiceLine line = new InvoiceLine(NO,itemsName,itemsPrice,itemCount,invoice );
+                invoice.getLines().add(line);
                   
         break;
                   
               }
          
         }    
+        gui.setInvoices(invoiceDataArray);
         
         }  
            

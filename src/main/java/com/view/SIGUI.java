@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class SIGUI extends javax.swing.JFrame {
 
     private ArrayList<Invoice> invoices;
-    private Controller cntrler = new Controller();
+    private Controller cntrler = new Controller(this);
 
     public ArrayList<Invoice> getInvoices() {
         return invoices;

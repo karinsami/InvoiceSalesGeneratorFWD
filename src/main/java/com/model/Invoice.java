@@ -9,6 +9,11 @@ public class Invoice {
     private String date;
     private String customerName;
     private ArrayList<InvoiceLine> lines;
+    private double invoiceTotal;
+    
+    
+    
+     
     
 
     public Invoice() {
@@ -19,7 +24,14 @@ public class Invoice {
         this.date = date;
         this.customerName = customerName;
     }
- 
+    public double calculateInvoiceTotal(){
+        
+        for (InvoiceLine line : getLines()){
+            invoiceTotal += line.calculateItemTotal();
+        }
+   
+    return invoiceTotal;
+}
     public String getCustomerName() {
         return customerName;
     }

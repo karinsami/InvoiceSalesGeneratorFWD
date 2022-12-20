@@ -22,6 +22,10 @@ public class InvoiceLine {
         this.num = num;
     }
     
+    public double calculateItemTotal(){
+        
+        return itemPrice*itemCount;
+    }
 
     public int getitemCount() {
         return itemCount;
