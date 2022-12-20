@@ -24,7 +24,10 @@ public class InvoiceLine {
     
     public double calculateItemTotal(){
         
+        System.out.println(this.itemCount);
+        System.out.println( itemPrice);
         return itemPrice*itemCount;
+       
     }
 
     public int getitemCount() {

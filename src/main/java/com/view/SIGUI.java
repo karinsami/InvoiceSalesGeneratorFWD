@@ -6,7 +6,11 @@ package com.view;
 
 import com.controller.Controller;
 import com.model.Invoice;
+import com.model.InvoiceTblModel;
 import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -16,6 +20,52 @@ public class SIGUI extends javax.swing.JFrame {
 
     private ArrayList<Invoice> invoices;
     private Controller cntrler = new Controller(this);
+    private InvoiceTblModel invoiceTblModel;
+
+    public InvoiceTblModel getInvoiceTblModel() {
+        return invoiceTblModel;
+    }
+
+    public void setInvoiceTblModel(InvoiceTblModel invoiceTblModel) {
+        this.invoiceTblModel = invoiceTblModel;
+    }
+
+    public JLabel getInvoiceTableLabel() {
+        return InvoiceTableLabel;
+    }
+
+    public JTable getLineTable() {
+        return lineTable;
+    }
+
+    public Controller getCntrler() {
+        return cntrler;
+    }
+
+    public JLabel getInvoiceItemsLabel() {
+        return InvoiceItemsLabel;
+    }
+
+    public JLabel getInvoiceTotalLabel() {
+        return InvoiceTotalLabel;
+    }
+
+    public JTextField getCustomerNameLabel() {
+        return customerNameLabel;
+    }
+
+    public JTextField getInvoiceDateLabel() {
+        return invoiceDateLabel;
+    }
+
+    public JLabel getInvoiceNumLabel() {
+        return invoiceNumLabel;
+    }
+
+    public JTable getInvoiceTable() {
+        return invoiceTable;
+    }
+    
 
     public ArrayList<Invoice> getInvoices() {
         return invoices;

@@ -3,6 +3,7 @@ package com.controller;
 
 import com.model.Invoice;
 import com.model.InvoiceLine;
+import com.model.InvoiceTblModel;
 import com.view.SIGUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -105,6 +106,11 @@ public class Controller implements ActionListener{
          
         }    
         gui.setInvoices(invoiceDataArray);
+        InvoiceTblModel invoiceTblModel = new InvoiceTblModel (invoiceDataArray);
+        gui.setInvoiceTblModel(invoiceTblModel);
+        gui.getInvoiceTable().setModel(invoiceTblModel);
+        gui.getInvoiceTblModel().fireTableDataChanged();
+                
         
         }  
            
