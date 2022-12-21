@@ -10,6 +10,10 @@ public class Invoice {
     private String customerName;
     private ArrayList<InvoiceLine> lines;
     private double invoiceTotal;
+
+    public double getInvoiceTotal() {
+        return invoiceTotal;
+    }
     
     
     

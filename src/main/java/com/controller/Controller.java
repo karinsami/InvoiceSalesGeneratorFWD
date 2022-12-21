@@ -4,6 +4,7 @@ package com.controller;
 import com.model.Invoice;
 import com.model.InvoiceLine;
 import com.model.InvoiceTblModel;
+import com.model.LinesTblModel;
 import com.view.SIGUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,16 +18,20 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 
-public class Controller implements ActionListener{
+public class Controller implements ActionListener,ListSelectionListener{
     
     private SIGUI gui;
 
     public Controller(SIGUI gui){
         this.gui = gui;
         
-
+ 
+    
+    
         
     }
     @Override
@@ -55,7 +60,21 @@ public class Controller implements ActionListener{
                 
         }
     }
-
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        int selectedInvIndex = gui.getInvoiceTable().getSelectedRow();
+        System.out.println("Invoice selected :" + selectedInvIndex );
+        Invoice currentInvoice = gui.getInvoices().get(selectedInvIndex);
+        gui.getInvoiceDateLabel().setText(currentInvoice.getDate());
+        gui.getInvoiceNumLabel().setText(""+currentInvoice.getinvoiceNo());
+        gui.getInvoiceTotalLabel().setText(""+currentInvoice.getInvoiceTotal());
+        gui.getCustomerNameLabel().setText(currentInvoice.getCustomerName());
+        LinesTblModel linesTblModel = new LinesTblModel(currentInvoice.getLines());
+        gui.getLineTable().setModel(linesTblModel);
+        linesTblModel.fireTableDataChanged();
+        
+        
+    }
     private void loadFile()  {
         JFileChooser fileChooser = new JFileChooser();
         try {                    
@@ -137,5 +156,6 @@ public class Controller implements ActionListener{
 
     private void deleteInvoice() {
     }
-    
+
+   
 }

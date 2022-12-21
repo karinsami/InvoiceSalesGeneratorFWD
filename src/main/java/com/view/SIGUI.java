@@ -95,6 +95,7 @@ public class SIGUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         invoiceTable = new javax.swing.JTable();
+        invoiceTable.getSelectionModel().addListSelectionListener(cntrler);
         createNewInvoiceBtn = new javax.swing.JButton();
         createNewInvoiceBtn.addActionListener(cntrler);
         deleteInvoiceBtn = new javax.swing.JButton();
