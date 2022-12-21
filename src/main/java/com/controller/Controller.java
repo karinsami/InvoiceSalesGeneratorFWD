@@ -63,7 +63,7 @@ public class Controller implements ActionListener,ListSelectionListener{
     @Override
     public void valueChanged(ListSelectionEvent e) {
         int selectedInvIndex = gui.getInvoiceTable().getSelectedRow();
-        System.out.println("Invoice selected :" + selectedInvIndex );
+        System.out.println("Invoice selected :" + selectedInvIndex+1 );
         Invoice currentInvoice = gui.getInvoices().get(selectedInvIndex);
         gui.getInvoiceDateLabel().setText(currentInvoice.getDate());
         gui.getInvoiceNumLabel().setText(""+currentInvoice.getinvoiceNo());
@@ -129,6 +129,7 @@ public class Controller implements ActionListener,ListSelectionListener{
         gui.setInvoiceTblModel(invoiceTblModel);
         gui.getInvoiceTable().setModel(invoiceTblModel);
         gui.getInvoiceTblModel().fireTableDataChanged();
+        
                 
         
         }  
@@ -155,6 +156,10 @@ public class Controller implements ActionListener,ListSelectionListener{
     }
 
     private void deleteInvoice() {
+        int selectedRow = gui.getInvoiceTable().getSelectedRow();
+        if (selectedRow != -1){
+            gui.getInvoices().remove(selectedRow);
+        }
     }
 
    

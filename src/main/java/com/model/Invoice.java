@@ -27,11 +27,14 @@ public class Invoice {
         this.invoiceNo = invoiceNo;
         this.date = date;
         this.customerName = customerName;
+        this.invoiceTotal = 0.0;
     }
     public double calculateInvoiceTotal(){
         
+        this.invoiceTotal = 0.0;
         for (InvoiceLine line : getLines()){
             invoiceTotal += line.calculateItemTotal();
+            System.out.println("invoiceTotal" + invoiceTotal);
         }
    
     return invoiceTotal;
