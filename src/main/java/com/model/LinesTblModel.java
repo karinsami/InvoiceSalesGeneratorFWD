@@ -12,6 +12,10 @@ public class LinesTblModel extends AbstractTableModel {
     public LinesTblModel(ArrayList<InvoiceLine> lines) {
         this.lines = lines;
     }
+
+    public ArrayList<InvoiceLine> getLines() {
+        return lines;
+    }
     
 
     @Override
@@ -43,6 +47,6 @@ public class LinesTblModel extends AbstractTableModel {
             
             default:return"";
      }
-    }
+        }
     
 }

@@ -74,6 +74,16 @@ public class SIGUI extends javax.swing.JFrame {
     public void setInvoices(ArrayList<Invoice> invoices) {
         this.invoices = invoices;
     }
+    public int getNxtInvoiceNO(){
+        int No = 0;
+        for(Invoice invoice : invoices){
+            if (invoice.getinvoiceNo()> No)
+                No = invoice.getinvoiceNo();
+        }
+        
+        
+        return No++;
+    }
     
     /**
      * Creates new form SIGUI
@@ -104,10 +114,10 @@ public class SIGUI extends javax.swing.JFrame {
         lbl2 = new javax.swing.JLabel();
         lbl3 = new javax.swing.JLabel();
         lbl4 = new javax.swing.JLabel();
-        saveBtn = new javax.swing.JButton();
-        saveBtn.addActionListener(cntrler);
-        cancelBtn = new javax.swing.JButton();
-        cancelBtn.addActionListener(cntrler);
+        createNewLineBtn = new javax.swing.JButton();
+        createNewLineBtn.addActionListener(cntrler);
+        deleteBtn = new javax.swing.JButton();
+        deleteBtn.addActionListener(cntrler);
         invoiceNumLabel = new javax.swing.JLabel();
         InvoiceTotalLabel = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -189,17 +199,18 @@ public class SIGUI extends javax.swing.JFrame {
 
         lbl4.setText("Invoice Total");
 
-        saveBtn.setText("Save");
-        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+        createNewLineBtn.setText("Create New Line");
+        createNewLineBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveBtnActionPerformed(evt);
+                createNewLineBtnActionPerformed(evt);
             }
         });
 
-        cancelBtn.setText("Cancel");
-        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+        deleteBtn.setText("Delete");
+        deleteBtn.setActionCommand("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelBtnActionPerformed(evt);
+                deleteBtnActionPerformed(evt);
             }
         });
 
@@ -216,7 +227,7 @@ public class SIGUI extends javax.swing.JFrame {
                 "NO.", "Item Name", "Item Price", "Count", "Item Total"
             }
         ));
-        lineTable.setCellSelectionEnabled(true);
+        lineTable.setColumnSelectionAllowed(false);
         lineTable.setGridColor(new java.awt.Color(153, 153, 153));
         lineTable.setName("Invoice Items"); // NOI18N
         lineTable.setShowGrid(true);
@@ -294,10 +305,10 @@ public class SIGUI extends javax.swing.JFrame {
                                 .addGap(37, 37, 37)
                                 .addComponent(deleteInvoiceBtn)
                                 .addGap(221, 221, 221)
-                                .addComponent(saveBtn)
+                                .addComponent(createNewLineBtn)
                                 .addGap(31, 31, 31)
-                                .addComponent(cancelBtn)))
-                        .addGap(0, 143, Short.MAX_VALUE)))
+                                .addComponent(deleteBtn)))
+                        .addGap(0, 99, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -332,8 +343,8 @@ public class SIGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createNewInvoiceBtn)
                     .addComponent(deleteInvoiceBtn)
-                    .addComponent(saveBtn)
-                    .addComponent(cancelBtn))
+                    .addComponent(createNewLineBtn)
+                    .addComponent(deleteBtn))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -348,13 +359,13 @@ public class SIGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_loadFileMIActionPerformed
 
-    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+    private void createNewLineBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewLineBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_saveBtnActionPerformed
+    }//GEN-LAST:event_createNewLineBtnActionPerformed
 
-    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cancelBtnActionPerformed
+    }//GEN-LAST:event_deleteBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -395,9 +406,10 @@ public class SIGUI extends javax.swing.JFrame {
     private javax.swing.JLabel InvoiceItemsLabel;
     private javax.swing.JLabel InvoiceTableLabel;
     private javax.swing.JLabel InvoiceTotalLabel;
-    private javax.swing.JButton cancelBtn;
     private javax.swing.JButton createNewInvoiceBtn;
+    private javax.swing.JButton createNewLineBtn;
     private javax.swing.JTextField customerNameLabel;
+    private javax.swing.JButton deleteBtn;
     private javax.swing.JButton deleteInvoiceBtn;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JTextField invoiceDateLabel;
@@ -413,7 +425,6 @@ public class SIGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl3;
     private javax.swing.JLabel lbl4;
     private javax.swing.JTable lineTable;
-    private javax.swing.JButton saveBtn;
     private javax.swing.JMenuItem saveFileMI;
     // End of variables declaration//GEN-END:variables
 

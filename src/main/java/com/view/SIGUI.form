@@ -153,12 +153,12 @@
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                               <Component id="deleteInvoiceBtn" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
-                              <Component id="saveBtn" min="-2" max="-2" attributes="0"/>
+                              <Component id="createNewLineBtn" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="cancelBtn" min="-2" max="-2" attributes="0"/>
+                              <Component id="deleteBtn" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="143" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="99" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -204,8 +204,8 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="createNewInvoiceBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="deleteInvoiceBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="saveBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cancelBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="createNewLineBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="deleteBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="19" max="32767" attributes="0"/>
           </Group>
@@ -282,26 +282,27 @@
         <Property name="text" type="java.lang.String" value="Invoice Total"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="saveBtn">
+    <Component class="javax.swing.JButton" name="createNewLineBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Save"/>
+        <Property name="text" type="java.lang.String" value="Create New Line"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createNewLineBtnActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="saveBtn.addActionListener(cntrler);"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="createNewLineBtn.addActionListener(cntrler);"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="cancelBtn">
+    <Component class="javax.swing.JButton" name="deleteBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cancel"/>
+        <Property name="text" type="java.lang.String" value="Delete"/>
+        <Property name="actionCommand" type="java.lang.String" value="Delete"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteBtnActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="cancelBtn.addActionListener(cntrler);"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="deleteBtn.addActionListener(cntrler);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="invoiceNumLabel">
@@ -329,7 +330,7 @@
                 <Column editable="true" title="Item Total" type="java.lang.Object"/>
               </Table>
             </Property>
-            <Property name="cellSelectionEnabled" type="boolean" value="true"/>
+            <Property name="columnSelectionAllowed" type="boolean" value="false"/>
             <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
