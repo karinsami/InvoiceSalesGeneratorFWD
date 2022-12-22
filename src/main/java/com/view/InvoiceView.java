@@ -25,16 +25,16 @@ public class InvoiceView extends JDialog{
         cancelBtn = new JButton ("Cancel");
         
         okayBtn.setActionCommand("createInvoiceOkay");
-        cancelBtn.setActionCommand("CreateInvoiceCancel");
+        cancelBtn.setActionCommand("createInvoiceCancel");
                
         okayBtn.addActionListener(gui.getCntrler());
         cancelBtn.addActionListener(gui.getCntrler());
         setLayout(new GridLayout(3,2));
         
-        add(customerNameFeild);
-        add(invoiceDateFeild);
         add(customerNameLbl);
+        add(customerNameFeild);
         add(invoiceDateLbl);
+        add(invoiceDateFeild);
         add(okayBtn);
         add(cancelBtn);
         

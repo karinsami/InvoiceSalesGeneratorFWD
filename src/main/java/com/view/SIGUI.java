@@ -200,6 +200,7 @@ public class SIGUI extends javax.swing.JFrame {
         lbl4.setText("Invoice Total");
 
         createNewLineBtn.setText("Create New Line");
+        createNewLineBtn.setActionCommand("createNewLine");
         createNewLineBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createNewLineBtnActionPerformed(evt);
@@ -207,7 +208,7 @@ public class SIGUI extends javax.swing.JFrame {
         });
 
         deleteBtn.setText("Delete");
-        deleteBtn.setActionCommand("Delete");
+        deleteBtn.setActionCommand("deleteItems");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteBtnActionPerformed(evt);

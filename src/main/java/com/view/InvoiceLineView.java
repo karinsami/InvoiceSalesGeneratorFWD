@@ -38,10 +38,12 @@ public class InvoiceLineView extends JDialog{
         cancelBtn.addActionListener(gui.getCntrler());
         setLayout(new GridLayout(4,2));
         
-        add(itemNameFeild);
-        add(itemCountFeild);
         add(itemNameLbl);
+        add(itemNameFeild);
         add(itemCountLbl);
+        add(itemCountFeild);
+        add(itemPriceLbl);
+        add(itemPriceFeild);
         add(okayBtn);
         add(cancelBtn);
         

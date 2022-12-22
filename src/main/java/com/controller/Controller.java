@@ -5,6 +5,7 @@ import com.model.Invoice;
 import com.model.InvoiceLine;
 import com.model.InvoiceTblModel;
 import com.model.LinesTblModel;
+import com.view.InvoiceLineView;
 import com.view.InvoiceView;
 import com.view.SIGUI;
 import java.awt.event.ActionEvent;
@@ -31,7 +32,7 @@ public class Controller implements ActionListener,ListSelectionListener{
     
     private SIGUI gui;
     private InvoiceView invoiceView;
-    private InvoiceLine invoiceLine;
+    private InvoiceLineView invoiceLineView;
     public Controller(SIGUI gui){
         this.gui = gui;
         
@@ -57,22 +58,22 @@ public class Controller implements ActionListener,ListSelectionListener{
             case"Delete Invoice":
                 deleteInvoice();
                 break;
-            case"Save":
+            case"createNewLine":
                 createNewLine();
                 break;
             case"deleteItems":
                 deleteItems();
                 break; 
-            case"CreateInvoiceCancel":
+            case"createInvoiceCancel":
                 createInvoiceCancel();
                 break; 
-            case"CreateInvoiceOkay":
+            case"createInvoiceOkay":
                 createInvoiceOkay();
                 break; 
-            case"CreateNewLineCancel":
+            case"createNewLineCancel":
                 createNewLineCancel();
                 break; 
-            case"CreateNewLineOkay":
+            case"createNewLineOkay":
                 createNewLineOkay();
                 break; 
                     
@@ -179,6 +180,7 @@ public class Controller implements ActionListener,ListSelectionListener{
             LinesTblModel linesTblModel =  (LinesTblModel) gui.getLineTable().getModel();
             linesTblModel.getLines().remove(selectedRow);
             linesTblModel.fireTableDataChanged();
+            System.out.println("herre");
         }
     }
 
@@ -217,15 +219,44 @@ public class Controller implements ActionListener,ListSelectionListener{
                 }
        
     }
-
+ private void createNewLine() {
+      invoiceLineView = new InvoiceLineView(gui);
+      invoiceLineView.setVisible(true);
+        
+    }
+ 
     private void createNewLineCancel() {
+        invoiceLineView.setVisible(false);
+        invoiceLineView.dispose();
+        invoiceLineView = null;
     }
 
     private void createNewLineOkay() {
+        
+        String itemName = invoiceLineView.getItemNameFeild().getText();
+        String itemCount = invoiceLineView.getItemCountFeild().getText();
+        String itemPrice = invoiceLineView.getItemPriceFeild().getText();
+        int count = Integer.parseInt(itemCount);
+        double price = Double.parseDouble(itemPrice);
+        int selectedInvoice = gui.getInvoiceTable().getSelectedRow();
+      
+        if(selectedInvoice !=-1){
+            Invoice invoice = gui.getInvoices().get(selectedInvoice);
+            InvoiceLine invoiceLine = new InvoiceLine (selectedInvoice,itemName,price,count,invoice);
+            invoice.getLines().add(invoiceLine);
+            LinesTblModel linesTblModel = (LinesTblModel) gui.getLineTable().getModel();
+            linesTblModel.fireTableDataChanged();
+            gui.getInvoiceTblModel().fireTableDataChanged();
+            
+        }
+            invoiceLineView.setVisible(false);
+            invoiceLineView.dispose();
+            invoiceLineView = null;
+            
+        System.out.println("okayissue");
      }
 
-    private void createNewLine() {
-    }
+   
 
    
 }
