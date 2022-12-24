@@ -10,6 +10,7 @@ public class Invoice {
     private String customerName;
     private ArrayList<InvoiceLine> lines;
     private double invoiceTotal;
+    private static int count = 0;
 
     public double getInvoiceTotal() {
         return invoiceTotal;
@@ -28,6 +29,15 @@ public class Invoice {
         this.date = date;
         this.customerName = customerName;
         this.invoiceTotal = 0.0;
+        this.count++;
+    }
+    public Invoice(String date, String customerName) {
+        this.count++;
+        this.invoiceNo = count;
+        this.date = date;
+        this.customerName = customerName;
+        this.invoiceTotal = 0.0;
+        
     }
     public double calculateInvoiceTotal(){
         
@@ -71,6 +81,8 @@ public class Invoice {
         return lines;
     }
 
-    
+    public String getCSVFormat(){
+        return invoiceNo+","+date+","+customerName;
+    }
     
 }

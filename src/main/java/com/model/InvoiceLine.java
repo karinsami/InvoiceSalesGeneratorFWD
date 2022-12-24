@@ -60,6 +60,11 @@ public class InvoiceLine {
 
     public void setitemPrice(double itemPrice) {
         this.itemPrice = itemPrice;
+        
+    }
+    
+    public String getCSVFormat(){
+        return lineNo+","+itemName+","+itemPrice+","+itemCount;
     }
     
     

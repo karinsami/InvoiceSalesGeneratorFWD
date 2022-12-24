@@ -11,6 +11,7 @@ import com.view.SIGUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -83,7 +84,7 @@ public class Controller implements ActionListener,ListSelectionListener{
     public void valueChanged(ListSelectionEvent e) {
         int selectedInvIndex = gui.getInvoiceTable().getSelectedRow();
         if (selectedInvIndex !=-1){
-        System.out.println("Invoice selected : " + selectedInvIndex+1 );
+        System.out.println("Invoice selected : " + (selectedInvIndex+1) );
         Invoice currentInvoice = gui.getInvoices().get(selectedInvIndex);
         gui.getInvoiceDateLabel().setText(currentInvoice.getDate());
         gui.getInvoiceNumLabel().setText(""+currentInvoice.getinvoiceNo());
@@ -165,6 +166,43 @@ public class Controller implements ActionListener,ListSelectionListener{
         
 
     private void saveFile() {
+          ArrayList<Invoice> invoices = gui.getInvoices();
+          String invoicesStrings = "";
+          String linesStrings = "";
+          for (Invoice invoice : invoices) {
+            String invoiceCSV = invoice.getCSVFormat();
+            invoicesStrings += invoiceCSV;
+            invoicesStrings += "\n";
+         for (InvoiceLine line : invoice.getLines()) {
+                String lineCSV = line.getCSVFormat();
+                linesStrings += lineCSV;
+                linesStrings += "\n";
+            }
+        }
+      
+        try {
+            JFileChooser fc = new JFileChooser();
+            int result = fc.showSaveDialog(gui);
+            if (result == JFileChooser.APPROVE_OPTION) {
+                File headerFile = fc.getSelectedFile();
+                FileWriter headerFileWriter = new FileWriter(headerFile);
+                headerFileWriter.write(invoicesStrings);
+                headerFileWriter.flush();
+                headerFileWriter.close();
+                result = fc.showSaveDialog(gui);
+                if (result == JFileChooser.APPROVE_OPTION) {
+                    File lineFile = fc.getSelectedFile();
+                    FileWriter lineFileWriter = new FileWriter(lineFile);
+                    lineFileWriter.write(linesStrings);
+                    lineFileWriter.flush();
+                    lineFileWriter.close();
+                     JOptionPane.showMessageDialog(gui,
+                            "save succesful", "INFORMATION",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        } catch (Exception ex) {
+        }
     }
 
     private void createInvoice() {
@@ -202,11 +240,11 @@ public class Controller implements ActionListener,ListSelectionListener{
         DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
         String invoiceDate = invoiceView.getInvoiceDateFeild().getText();
         String customerName = invoiceView.getCustomerNameFeild().getText();
-        int No = gui.getNxtInvoiceNO();
+      //  int No = gui.getNxtInvoiceNO();
         
         try{
             dateFormat.parse(invoiceDate);
-             Invoice invoice = new Invoice(No,invoiceDate,customerName);
+             Invoice invoice = new Invoice(invoiceDate,customerName);
             gui.getInvoices().add(invoice);
             gui.getInvoiceTblModel().fireTableDataChanged();
             invoiceView.setVisible(false);
@@ -239,10 +277,11 @@ public class Controller implements ActionListener,ListSelectionListener{
         int count = Integer.parseInt(itemCount);
         double price = Double.parseDouble(itemPrice);
         int selectedInvoice = gui.getInvoiceTable().getSelectedRow();
+        System.out.println(selectedInvoice);
       
         if(selectedInvoice !=-1){
             Invoice invoice = gui.getInvoices().get(selectedInvoice);
-            InvoiceLine invoiceLine = new InvoiceLine (selectedInvoice,itemName,price,count,invoice);
+            InvoiceLine invoiceLine = new InvoiceLine (selectedInvoice+1,itemName,price,count,invoice);
             invoice.getLines().add(invoiceLine);
             LinesTblModel linesTblModel = (LinesTblModel) gui.getLineTable().getModel();
             linesTblModel.fireTableDataChanged();
